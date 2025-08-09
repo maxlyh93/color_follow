@@ -256,9 +256,15 @@ try:
                 # Display can fail if no X server; ignore in headless mode
                 pass
 
-        # graceful quit
-        if (cv2.waitKey(1) & 0xFF) == ord('q'):
+        # key handling (single waitKey per loop)
+        key = cv2.waitKey(1) & 0xFF
+        if key == ord('q'):
             break
+        elif key == ord('m'):
+            motors_enabled = not motors_enabled
+            if not motors_enabled:
+                stop()
+            print(f"Motors {'ENABLED' if motors_enabled else 'DISABLED'}")
 
         frame_i += 1
 
