@@ -174,8 +174,8 @@ try:
             cv2.putText(display, "No target", (10,25),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0,0,255), 2)
 
-        # Show windows
-        cv2.imshow("Camera", frame)
+        # Show windows (Camera window removed)
+        # cv2.imshow("Camera", frame)  # <-- removed as requested
         cv2.imshow("Mask", mask)
         cv2.imshow("Detected Colour", imgColor)
         cv2.imshow("Tracking+Control", display)
