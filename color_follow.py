@@ -96,8 +96,12 @@ def crop_roi(frame, center, r, margin=60):
 # ========= MOTORS (pins per Oivio Pi) =========
 left_motor  = Motor(forward=20, backward=9, pwm=True)
 right_motor = Motor(forward=6,  backward=5, pwm=True)
+motors_enabled = True   # <-- toggle state
 
 def drive(left_speed, right_speed):
+    if not motors_enabled:
+        stop()
+        return
     """Speeds in [-1.0, 1.0]; +forward, -backward"""
     left_speed  = max(-1.0, min(1.0, left_speed))
     right_speed = max(-1.0, min(1.0, right_speed))
